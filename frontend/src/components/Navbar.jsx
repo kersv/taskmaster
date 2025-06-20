@@ -1,12 +1,14 @@
 import { Link, useResolvedPath } from "react-router-dom";
 import { Clipboard } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
+import { useTask } from "../hooks/useTask";
 
 
 
 function Navbar() {
   const { pathname } = useResolvedPath();
   const isHomePage = pathname === "/";
+  const {tasks} = useTask()
 
 
 
@@ -38,7 +40,7 @@ function Navbar() {
                 <div className="p-2 rounded-full hover:bg-base-200 transition-colors">
                   <Clipboard className="size-5" />
                   <span className="badge badge-sm badge-primary indicator-item">
-                    8
+                    {tasks.length}
                   </span>
                 </div>
               </div>
